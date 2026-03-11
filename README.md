@@ -78,6 +78,7 @@ To run the API locally, I used Uvicorn. Uvicorn is an ASGI web server for Python
 I also used Pydantic, through FastAPI, for the response models. Pydantic is commonly used for validation and serialization based on Python type hints. I chose it because it helped me define a clear response structure for the customer endpoint and made the API documentation cleaner.
 
 -	SQLite Database
+
 For this project I used SQLite as the database. I chose SQLite because it requires no external database server and it is convenient to set up locally. Since the goal of this task was to demonstrate functionality rather than production deployment, I chose SQLite because it keeps the setup simple while still allowing the use of SQL.
 Another reason I decided to use SQLite is that it lets me demonstrate relational database design properly, including separate customers and orders tables and a relationship between them. I felt this was enough for the scope of the task without adding unnecessary complexity.
 
@@ -153,5 +154,6 @@ Second, I would add basic automated tests for the API and database logic. For ex
 
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+
 
 

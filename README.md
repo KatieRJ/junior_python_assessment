@@ -122,16 +122,21 @@ The overall flow is:
 data.csv → setup_db.py → customer_orders.db → api.py / etl_export.py → output CSV file
 
 Data Loading:
+
 The project includes two sample data files located in the data folder (customers.csv and orders.csv). These files contain the initial dataset used by the application. The orders.csv file references customers using the customer_id field, which creates the relationship between customers and their orders.
 
 Next, the setup script is run using:
 ``` python -m app.setup_db ```
+
 This script creates the SQLite database (customer_orders.db), creates the required tables (customers and orders), and loads the data from the CSV files into the database. Before inserting records, the script checks whether a customer or order already exists. This allows the script to be run multiple times without creating duplicate records.
 
 API Flow:
+
 The API is implemented in api.py and is started with:
 ``` uvicorn app.api:app --reload ```
+
 The main endpoint is: /customers/{customer_id}.
+
 When this endpoint is called, the API:
 1.	receives the customer ID from the request
 2.	queries the database for that customer
@@ -140,8 +145,10 @@ When this endpoint is called, the API:
 If the customer does not exist, the API returns a 404 error.
 
 Export Script Flow:
+
 The export script is run using:
 ``` python -m app.etl_export ```
+
 This script performs a simple ETL process:
 1.	Extract active customers from the database
 2.	Transform the data by combining customer details with their orders and calculating the total order value (quantity × unit_price)
@@ -150,15 +157,12 @@ Each order becomes one row in the export file. And the generated file follows th
 This prevents previous exports from being overwritten.
 
 4. WHAT I WOULD IMPROVE
+
 While the current implementation meets the requirements of the task, there are a few improvements I would make.
 
 First, I would add input validation for data loading. Currently the CSV loading process assumes the input data is valid. In a real world scenario, I would add stronger validation when reading the CSV files. For example, checking for missing values and incorrect data types. This would help prevent invalid data from being inserted into the database.
 
 Second, I would add basic automated tests for the API and database logic. For example, tests that confirm the API returns the correct customer data or that the setup script loads the expected number of records.
 
-
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
-
-
-
 

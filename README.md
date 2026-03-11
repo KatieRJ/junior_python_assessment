@@ -5,7 +5,9 @@ Firstly, make sure these are installed:
 - Code editor E.g. VS Code
 
 Step 1:
-Open the project folder called junior_python_assessment in your code editor.
+Download the repository and extract the ZIP file. Open the extracted project folder in code editor.
+
+Note: The folder name may appear as junior_python_assessment-main if downloaded from GitHub.
 
 Step 2:
 I strongly suggest creating a virtual environment for the project by using the following command in the terminal:
@@ -168,6 +170,7 @@ First, I would add input validation for data loading. Currently the CSV loading 
 Second, I would add basic automated tests for the API and database logic. For example, tests that confirm the API returns the correct customer data or that the setup script loads the expected number of records.
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+
 
 
 

@@ -91,6 +91,7 @@ This separation helped me keep responsibilities of the modules clear:
 3.	setup_db.py → responsible for database setup and data loading
 4.	api.py → responsible for API endpoints
 5.	etl_export.py → responsible for export/ETL script
+
 This structure makes the project easier to maintain and extend later.
 
 Another decision I had to make was how much data to include in the schema. I kept the structure simple and included the required fields, plus a small number of extra fields such as phone_number and country, because they made the sample data feel more realistic without making the database too complicated. 
@@ -101,7 +102,9 @@ I also decided to write the export script so that it follows a simple ETL patter
 1.	Extract data from the database
 2.	Transform the data (combine customer and order information, calculate the total cost)
 3.	Load the result into a CSV file
+
 Each order is exported as one row in the CSV file. This structure keeps the dataset easy to analyse and process later.
+
 I also named the export file so that it also includes the current date in the file name. This way multiple exports can exist without overwriting previous files and provides clarity on when the file was generated.
 
 Finally, I chose to use snake_case for file naming in the final version of the project because that is the common naming style in Python projects and keeps file names simple and consistent. I also added small comments in the code to explain what each main block does. I tried to keep these comments simple and focused on explaining the purpose of the code rather than describing every line. The goal was to make the scripts easier to read and understand for someone reviewing the project or running it for the first time.
@@ -114,6 +117,7 @@ This application has three main stages:
 1.	sample data is stored in CSV files
 2.	the CSV data is loaded into the SQLite database
 3.	the database is then used by both the API and the export script
+
 The overall flow is:
 data.csv → setup_db.py → customer_orders.db → api.py / etl_export.py → output CSV file
 
@@ -154,6 +158,7 @@ Second, I would add basic automated tests for the API and database logic. For ex
 
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+
 
 
 

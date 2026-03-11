@@ -1,4 +1,5 @@
 1.	HOW TO RUN THE APPLICATION
+
 Firstly, make sure these are installed:
 - Python
 - Code editor E.g. VS Code
@@ -65,6 +66,7 @@ Another useful feature and a reason I chose FastAPI, is that it automatically ge
 For database interaction I used SQLAlchemy because SQLAlchemy allowed me to represent database tables as Python classes and interact with them using Python objects, instead of writing raw SQL queries. This approach keeps the code more readable and easier to maintain. Importantly, it also supports multiple database systems, which makes it flexible if the database needs to change later. 
 
 To run the API locally, I used Uvicorn. Uvicorn is an ASGI web server for Python, and FastAPI commonly runs on top of it. I used it because it is simple to start from the command line and supports reload mode for local development, which I found useful when testing changes.
+
 I also used Pydantic, through FastAPI, for the response models. Pydantic is commonly used for validation and serialization based on Python type hints. I chose it because it helped me define a clear response structure for the customer endpoint and made the API documentation cleaner.
 
 -	SQLite Database
@@ -142,3 +144,4 @@ Second, I would add basic automated tests for the API and database logic. For ex
 
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+

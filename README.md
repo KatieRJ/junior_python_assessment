@@ -14,22 +14,26 @@ I strongly suggest creating a virtual environment for the project by using the f
 Step 3:
 To activate the virtual environment you can use the following command line:
 ```  .venv\Scripts\Activate.ps1 ```
+
 Note: After this step, the terminal should show (.venv) at the beginning of the line.
 
 Step 4:
 Install all required dependencies from requirements.txt by using the following command line:
 ``` pip install -r requirements.txt ```
+
 Note: Because virtual environment was created beforehand, these dependencies will be installed inside the project only. 
 
 Step 5:
 Set up the database by running setup script. Use the following command line in the terminal:
 ``` python -m app.setup_db ```
 This script will create the SQLite database file, including the tables, and load the CSV files.
+
 Note: After running this script, a database file called customer_orders.db should appear.
 
 Step 6:
 Start the API by running the following command line:
 ``` uvicorn app.api:app --reload ```
+
 Note: After running this command, the terminal should show a message like this: “ Uvicorn running on http://127.0.0.1:8000 “
 
 Step 7:
@@ -37,12 +41,14 @@ Next, open the API in browser by using this address http://127.0.0.1:8000/docs  
 
 Step 8:
 To test the customer endpoint, on the Swagger page, click on the little arrow on the left in the “ GET/customers/ {customer_id} ” line. Next, click on “Try it out”, specify which customer ID you wish to inspect and click “ Execute “ .  This should show the information about the customer and their order/s. 
+
 Note: To stop the API, press CTRL + C in the terminal. 
 
 Step 9:
 Next, to run the export script, use the following command line:
 ``` python -m app.etl_export ```
 This script looks for the active customers in the database, adds their order information, transforms the data and exports the results to a csv file in the output folder.
+
 Note: The output csv file should look like this “ Active_Customer_Orders_YYYY-MM-DD.csv “. 
 
 Step 10:
@@ -59,10 +65,12 @@ and check the CSV file to make sure the exported data looks correct.
 For this task, my goal was to build a small API with a database and an export process. I tried to keep the design simple but still follow common Python practices and widely used libraries.
 
 -	Framework Choice
+
 For the API, I chose FastAPI. I made this decision because FastAPI’s official documentation describes this framework as widely used for building APIs in Python and has become very popular in recent years. One of the main reasons for choosing FastAPI is its high performance and simplicity. FastAPI is considered one of the fastest Python frameworks available for building APIs. 
 Another useful feature and a reason I chose FastAPI, is that it automatically generates interactive documentation (Swagger/OpenAPI). This makes it much easier to test endpoints and understand how the API works without needing additional tools. 
 
 -	Library Choices
+  
 For database interaction I used SQLAlchemy because SQLAlchemy allowed me to represent database tables as Python classes and interact with them using Python objects, instead of writing raw SQL queries. This approach keeps the code more readable and easier to maintain. Importantly, it also supports multiple database systems, which makes it flexible if the database needs to change later. 
 
 To run the API locally, I used Uvicorn. Uvicorn is an ASGI web server for Python, and FastAPI commonly runs on top of it. I used it because it is simple to start from the command line and supports reload mode for local development, which I found useful when testing changes.
@@ -74,6 +82,7 @@ For this project I used SQLite as the database. I chose SQLite because it requir
 Another reason I decided to use SQLite is that it lets me demonstrate relational database design properly, including separate customers and orders tables and a relationship between them. I felt this was enough for the scope of the task without adding unnecessary complexity.
 
 -	Main decisions I had to make
+
 Firstly, I had to decide how to structure this project. I decided to break it into small modules inside the app folder.
 This separation helped me keep responsibilities of the modules clear:
 1.	models.py → responsible for database tables
@@ -144,4 +153,5 @@ Second, I would add basic automated tests for the API and database logic. For ex
 
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+
 

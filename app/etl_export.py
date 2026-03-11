@@ -2,7 +2,9 @@ import csv
 from app.db import SessionLocal
 from app.models import Customer
 from datetime import datetime
+import os
 
+os.makedirs("output", exist_ok=True)
 date_str = datetime.now().strftime("%Y-%m-%d")
 OUTPUT_FILE = f"output/Active_Customer_Orders_{date_str}.csv" # output file name + date when generated
 
@@ -42,4 +44,5 @@ def export_active_customers():
     print(f"Exporting completed: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
+
     export_active_customers()

@@ -62,7 +62,7 @@ and check the CSV file to make sure the exported data looks correct.
 
 2. CHOICES AND REASONING
 
-For this task, my goal was to build a small API with a database and an export process. I tried to keep the design simple but still follow common Python practices and widely used libraries.
+For this task, my goal was to build a simple Python solution that meets the main assessment requirements: database setup, a customer API endpoint, and a standalone export script. I tried to keep the design clear and easy to run locally while still following common Python practices.
 
 -	Framework Choice
 
@@ -168,6 +168,7 @@ First, I would add input validation for data loading. Currently the CSV loading 
 Second, I would add basic automated tests for the API and database logic. For example, tests that confirm the API returns the correct customer data or that the setup script loads the expected number of records.
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+
 
 
 

@@ -156,6 +156,7 @@ This script performs a simple ETL process:
 Each order becomes one row in the export file. And the generated file follows this format: Active_Customer_Orders_YYYY-MM-DD.csv
 This prevents previous exports from being overwritten.
 
+
 4. WHAT I WOULD IMPROVE
 
 While the current implementation meets the requirements of the task, there are a few improvements I would make.
@@ -165,4 +166,5 @@ First, I would add input validation for data loading. Currently the CSV loading 
 Second, I would add basic automated tests for the API and database logic. For example, tests that confirm the API returns the correct customer data or that the setup script loads the expected number of records.
 
 Lastly, for larger datasets, the current export process might become slower because it loads all results into memory before writing them to the CSV file. A possible improvement would be streaming the results directly to the file.
+
 

@@ -1,0 +1,22 @@
+id,customer_id,product,quantity,unit_price
+1,1,Laptop,1,1200
+2,1,Mouse,2,25
+3,2,Keyboard,1,80
+4,3,Monitor,2,300
+5,4,USB Cable,3,10
+6,5,Desk Lamp,1,45
+7,6,Headphones,1,150
+8,7,Webcam,1,95
+9,8,External SSD,1,200
+10,9,Office Chair,1,250
+11,10,Tablet,1,500
+12,11,Printer,1,180
+13,12,Router,2,70
+14,13,Smartphone,1,900
+15,14,Microphone,1,120
+16,15,Keyboard,1,90
+17,16,Monitor,1,280
+18,17,Mouse,1,30
+19,18,Laptop Stand,2,40
+20,19,USB Hub,1,35
+21,20,Desk Lamp,1,50
